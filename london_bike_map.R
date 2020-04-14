@@ -16,7 +16,7 @@ library(raster)
 library(ggmap)
 
 # In order to use Google Map as a background, while still being linked to coordinates 
-register_google(key = 'AIzaSyCK8SqlDbOItNn1Z4twBMluGr5BdsBTq5E')
+register_google(key = '')
 london_map <- get_map(location = c(-0.120995, 51.509114), source = 'google', 
                maptype = 'terrain', zoom = 13)
 
