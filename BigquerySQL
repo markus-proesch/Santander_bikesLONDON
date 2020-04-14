@@ -1,0 +1,26 @@
+SELECT
+  bike_id,
+  start_date,
+  start_station_name,
+  end_station_name,
+  start_s.longitude AS start_long,
+  start_s.latitude AS start_lat,
+  end_s.longitude as end_long,
+  end_s.latitude as end_lat
+
+FROM
+  `bigquery-public-data.london_bicycles.cycle_hire`
+INNER JOIN
+  `bigquery-public-data.london_bicycles.cycle_stations` AS start_s
+ON
+  start_station_id = start_s.id
+INNER JOIN
+  `bigquery-public-data.london_bicycles.cycle_stations` AS end_s
+ON
+  end_station_id = end_s.id
+WHERE
+  EXTRACT(date
+  FROM
+    start_date) = '2015-07-09' and start_station_id != end_station_id
+ORDER BY
+  bike_id
